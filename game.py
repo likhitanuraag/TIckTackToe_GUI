@@ -23,11 +23,6 @@ def main():
                 run = False
 
             eve = event
-            #if event.type == pygame.MOUSEBUTTONDOWN:
-                #pos = pygame.mouse.get_pos()
-                #pos_coordinate = (pos[0]//SQUARE_SIZE, pos[1]//SQUARE_SIZE)
-                #print(pos_coordinate)
-                #pygame.draw.rect(WIN, WHITE, ((SQUARE_SIZE + LINE_PADDING)*pos_coordinate[0], (SQUARE_SIZE + LINE_PADDING)*pos_coordinate[1], SQUARE_SIZE - LINE_PADDING, SQUARE_SIZE - LINE_PADDING))
 
         board.draw_board(WIN, eve)
         pygame.display.update()

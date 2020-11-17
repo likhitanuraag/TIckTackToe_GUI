@@ -9,5 +9,6 @@ X_M = pygame.image.load('Assets\\x_m.png')
 O_L = pygame.image.load('Assets\\o_l.png')
 O_S = pygame.image.load('Assets\\o_s.png')
 O_M = pygame.image.load('Assets\\o_m.png')
+BG = pygame.image.load('Assets\\bg.jpg')
 
-RED, WHITE, BLACK, BLUE = (255, 0, 0), (255, 255, 255), (0, 0, 0), (0, 0, 255)
+RED, WHITE, BLACK, BLUE, CUSTOM = (255, 0, 0), (255, 255, 255), (0, 0, 0), (0, 0, 255), (200, 204, 213)

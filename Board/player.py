@@ -1,30 +1,22 @@
 import pygame
 from .constants import SQUARE_SIZE, DIM
+#from .board import Board
 
 class Player:
     PADDING  = 10
     BORDER = 2
 
-    def __init__(self, dim, player):
+    def __init__(self, dim, winner):
         self.dim = dim
-        self.player = player
-        self.x = "X"
-        self.o = "O"
-
+        self.winner = winner
         self.calc_pos()
 
-    def calc_pos(self):
-        self.x = SQUARE_SIZE * self.dim + SQUARE_SIZE // 2
-        self.y = SQUARE_SIZE * self.dim + SQUARE_SIZE // 2
-
-    def player_turn(self, player):
-        for game_loop in DIM*DIM:
-            if game_loop % 2 == 0:
-                pass # Even 
-            else:
-                pass # Odd
-
+    def calc_pos():
+        pos = pygame.mouse.get_pos()
+        return (pos[0]//SQUARE_SIZE, pos[1]//SQUARE_SIZE)
+    
+    def validation_backend(player, config):
+        pass        
 
     def __repr__(self):
         return str(self.player)
-
