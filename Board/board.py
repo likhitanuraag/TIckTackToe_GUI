@@ -37,14 +37,14 @@ class Board:
                     self.POS_CONFIG.append(self.pos_coordinate)
                     self.X_LOC.append(self.pos_coordinate)
                     self.oe_count += 1
-                    print(self.X_LOC)
-                    #Player.validation_backend(self.X_LOC, self.POS_CONFIG)
+                    Player.validation_backend(self.X_LOC)
             else:
                 self.pos_coordinate = self.prev_pos = Player.calc_pos()
                 if self.prev_pos not in self.POS_CONFIG:
                     self.POS_CONFIG.append(self.pos_coordinate)
                     self.O_LOC.append(self.pos_coordinate)
                     self.oe_count += 1
+                    Player.validation_backend(self.O_LOC)
 
     def get_player_coordinates(self):
         return self.POS_CONFIG
