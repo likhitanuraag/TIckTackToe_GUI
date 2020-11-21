@@ -2,14 +2,9 @@ import pygame
 from .constants import SQUARE_SIZE, DIM
 #from .board import Board
 
-SUM = 0
 class Player:
-    PADDING  = 10
-    BORDER = 2
-
     def __init__(self, dim, winner):
         self.dim = dim
-        self.winner = winner
         self.calc_pos()
 
     def calc_pos():
@@ -35,7 +30,7 @@ class Player:
                         return True
         pos_lock = []
         for xx in range(len(player)): ##RightDownDiagonal check
-            print("xx: ", xx, "player: ", player)
+            #print("xx: ", xx, "player: ", player)
             if player[xx][0] == player[xx][1] and player[xx][1] == player[xx][0]:
                 pos_lock.append(xx)
                 if len(pos_lock) == DIM:

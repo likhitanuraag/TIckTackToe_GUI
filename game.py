@@ -26,6 +26,7 @@ def main():
 
         board.draw_board(WIN, eve)
         pygame.display.update()
+
     
     pygame.quit()
 
