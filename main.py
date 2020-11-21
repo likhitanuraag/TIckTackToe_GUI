@@ -1,4 +1,5 @@
 import kivy
+import sys
 from kivy.app import App
 from kivy.core import text
 from kivy.uix.label import Label
@@ -13,3 +14,4 @@ class MyApp(App):
 if __name__ == "__main__":
     #call(["python", "game.py"])
     MyApp().run()
+    sys.exit()

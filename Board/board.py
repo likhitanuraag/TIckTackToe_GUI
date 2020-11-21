@@ -3,7 +3,7 @@ import subprocess
 from time import sleep
 from subprocess import call
 import sys
-from .constants import WHITE, BLACK, CUSTOM, DIM, RED, SQUARE_SIZE, X_M, O_M, BG, XES, OES
+from .constants import CUSTOM, DIM, SQUARE_SIZE, BG, XES, OES, DRAW
 from .player import Player
 
 LINE_PADDING = 10
@@ -39,7 +39,17 @@ class Board:
                 o_win = 0
                 sleep(5)
                 Board.spawn_program_and_die(["python", "main.py"])
+        if p_win == "DRAW":
+            while True:
+                window.blit(DRAW, (0, 0))
+                pygame.display.update()
+                sleep(5)
+                Board.spawn_program_and_die(["python", "main.py"])
 
+    def DRAW_check(win, all_coordinates, dim):
+        if int(len(all_coordinates)) == dim*dim:
+            print("Its a DRAW!")
+            Board.game_end_window(win, "DRAW")
 
     def draw_board(self, win, event):
         global X_WIN
@@ -53,13 +63,12 @@ class Board:
                     #print("1")
                 elif ((xx, yy) in self.X_LOC):
                     for loc in self.X_LOC:
-                        win.blit(X_M, ((SQUARE_SIZE + (LINE_PADDING - DIM))*loc[0], (SQUARE_SIZE + (LINE_PADDING - DIM))*loc[1]))
+                        win.blit(Player.player_asset_selector(DIM, "X"), ((SQUARE_SIZE + (LINE_PADDING - DIM))*loc[0], (SQUARE_SIZE + (LINE_PADDING - DIM))*loc[1]))
                 else:
                     for loc in self.O_LOC:
-                        win.blit(O_M, ((SQUARE_SIZE + (LINE_PADDING - DIM))*loc[0], (SQUARE_SIZE + (LINE_PADDING - DIM))*loc[1]))
+                        win.blit(Player.player_asset_selector(DIM, "O"), ((SQUARE_SIZE + (LINE_PADDING - DIM))*loc[0], (SQUARE_SIZE + (LINE_PADDING - DIM))*loc[1]))
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            #print(self.oe_count, self.prev_pos, self.POS_CONFIG)
             if self.oe_count % 2 == 0:
                 self.pos_coordinate = self.prev_pos = Player.calc_pos()
                 if self.prev_pos not in self.POS_CONFIG:
@@ -69,9 +78,8 @@ class Board:
                     X_WIN = Player.validation_backend(self.X_LOC)
                     if X_WIN == True:
                         print("X wins")
-                        #X_WIN = 0
                         Board.game_end_window(win, "X")
-                        #pygame.quit()
+                    Board.DRAW_check(win, self.POS_CONFIG, DIM)
             else:
                 self.pos_coordinate = self.prev_pos = Player.calc_pos()
                 if self.prev_pos not in self.POS_CONFIG:
@@ -81,9 +89,9 @@ class Board:
                     O_WIN = Player.validation_backend(self.O_LOC)
                     if O_WIN == True:
                         print("O wins")
-                        #O_WIN = 0
                         Board.game_end_window(win, "O")
-                        #pygame.quit()
+                    Board.DRAW_check(win, self.POS_CONFIG, DIM)
+            
     
     def get_player_coordinates(self):
         return self.POS_CONFIG

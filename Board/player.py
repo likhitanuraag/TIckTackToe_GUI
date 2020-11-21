@@ -1,11 +1,23 @@
 import pygame
-from .constants import SQUARE_SIZE, DIM
-#from .board import Board
+from .constants import SQUARE_SIZE, DIM, X_M, O_M, X_S, O_S, X_MS, O_MS
 
 class Player:
-    def __init__(self, dim, winner):
-        self.dim = dim
+    def __init__(self):
         self.calc_pos()
+
+    def player_asset_selector(DIM, player):
+        if DIM == 3 and player == "X":
+            return X_M
+        if DIM == 6 and player == "X":
+            return X_MS
+        if DIM == 9 and player == "X":
+            return X_S
+        if DIM == 3 and player == "O":
+            return O_M
+        if DIM == 6 and player == "O":
+            return O_MS
+        if DIM == 9 and player == "O":
+            return O_S
 
     def calc_pos():
         pos = pygame.mouse.get_pos()
