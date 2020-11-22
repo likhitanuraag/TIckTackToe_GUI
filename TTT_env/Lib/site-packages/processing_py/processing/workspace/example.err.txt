@@ -1,0 +1,1 @@
+NameError: global name 'displayWidth' is not defined at 24:0 in example.py

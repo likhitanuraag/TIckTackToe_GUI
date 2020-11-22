@@ -1,7 +1,13 @@
 import pygame
+import json
+#from .dim import DIM
+
+with open('dim-config.json', 'r') as f:
+    dim_json = json.load(f)
+
+DIM = int(dim_json['DIM'])
 
 WIDTH, HEIGHT = 600, 600
-DIM = 3
 SQUARE_SIZE = WIDTH//DIM
 X_L = pygame.image.load('Assets\\x_l.png')
 X_S = pygame.image.load('Assets\\x_s.png')

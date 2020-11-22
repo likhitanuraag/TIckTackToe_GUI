@@ -1,0 +1,55 @@
+<TTTGrid>
+
+    #name: name
+    #email: email
+    dimension: dimension
+    playtype: playtype
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'Assets\\mm_bg_2.jpg'
+
+    GridLayout:
+        cols: 1
+        size: root.width - 400, root.height - 400
+        pos: 200, 100
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Type of game: "
+
+            Spinner:
+                id: playtype
+                text: "Local-player"                   #default value showed
+                values: ["Local-player" , "Single-player (Coming-soon)","Multi-player (Coming-soon)","LAN (Coming-soon)"]       #list of values to show
+                on_text:
+                    root.on_spinner_select_playType(self.text)
+                #some other configs like pos_hint, size_hint, etc
+            
+            Label:
+                text: "Dimension: "
+
+            Spinner:
+                id: dimension
+                text: "3X3"                   #default value showed
+                values: ["3X3","6X6","9X9"]       #list of values to show
+                on_text:
+                    root.on_spinner_select_DIM(self.text)
+                #some other configs like pos_hint, size_hint, etc
+
+        GridLayout:
+            Button:
+                #text: "Play"
+                #background_color: 0, 0, 0, 50
+                background_normal: 'Assets\\play_button_normal_s.png'
+                background_down: 'Assets\\play_button_down_s.png'
+                #size_hint: 0.2, 1
+                size: 100, 100
+                size_hint: None, None
+                pos: 350, 50
+                on_press: root.btn()
+                #pos_hint: {"x":0.5, "y":0.5}
