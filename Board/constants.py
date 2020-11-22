@@ -1,6 +1,5 @@
 import pygame
 import json
-#from .dim import DIM
 
 with open('dim-config.json', 'r') as f:
     dim_json = json.load(f)

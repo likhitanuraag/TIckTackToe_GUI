@@ -1,3 +1,5 @@
+from kivy.config import Config
+Config.set('graphics','resizable', False)
 import kivy
 import sys
 import subprocess
@@ -12,13 +14,15 @@ from kivy.uix.button import Button
 from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
 from kivy.uix.spinner import Spinner
-from kivy.config import Config 
-from kivy.config import Config
-kivy.config.Config.set('graphics','resizable', False)
+from kivy.core.audio import SoundLoader
+
 
 class TTTGrid(Widget):
     #name = ObjectProperty(None)
     #email = ObjectProperty(None)
+    sound = SoundLoader.load("Assets\\sounds\\menu_1.mp3")
+    sound.play()
+
 
     def on_spinner_select_playType(self, playtype = "Local-player"):
         '''
@@ -61,7 +65,7 @@ def spawn_program_and_die(program, exit_code=0):
     sys.exit(exit_code)
 
 if __name__ == "__main__":
-    dim = {"DIM": 3}
+    dim = {"DIM": 3} #default setting
     with open('dim-config.json', 'w') as f:  # writing JSON object
         json.dump(dim, f)
     TTTApp().run()
