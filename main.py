@@ -61,4 +61,7 @@ def spawn_program_and_die(program, exit_code=0):
     sys.exit(exit_code)
 
 if __name__ == "__main__":
+    dim = {"DIM": 3}
+    with open('dim-config.json', 'w') as f:  # writing JSON object
+        json.dump(dim, f)
     TTTApp().run()
