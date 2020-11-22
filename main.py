@@ -61,6 +61,4 @@ def spawn_program_and_die(program, exit_code=0):
     sys.exit(exit_code)
 
 if __name__ == "__main__":
-    #call(["python", "game.py"])
     TTTApp().run()
-    #sys.exit()
