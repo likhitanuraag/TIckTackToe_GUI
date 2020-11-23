@@ -1,3 +1,5 @@
+### DISCARDED ###
+
 from kivy.config import Config
 Config.set('graphics','resizable', False)
 import kivy

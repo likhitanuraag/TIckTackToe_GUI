@@ -35,7 +35,7 @@ class Board:
                 pygame.mixer.music.load('Assets\\sounds\\x_win_sound.mp3')
                 pygame.mixer.music.play()
                 sleep(8)
-                Board.spawn_program_and_die(["python", "main.py"])
+                Board.spawn_program_and_die(["python", "menu.py"])
         if p_win == "O":
             while True:
                 window.blit(OES, (0, 0))
@@ -44,7 +44,7 @@ class Board:
                 pygame.mixer.music.load('Assets\\sounds\\o_win.mp3')
                 pygame.mixer.music.play()
                 sleep(8)
-                Board.spawn_program_and_die(["python", "main.py"])
+                Board.spawn_program_and_die(["python", "menu.py"])
         if p_win == "DRAW":
             while True:
                 window.blit(DRAW, (0, 0))
@@ -52,7 +52,7 @@ class Board:
                 pygame.mixer.music.load('Assets\\sounds\\draw_sound.mp3')
                 pygame.mixer.music.play()
                 sleep(8)
-                Board.spawn_program_and_die(["python", "main.py"])
+                Board.spawn_program_and_die(["python", "menu.py"])
 
     def DRAW_check(win, all_coordinates, dim):
         if int(len(all_coordinates)) == dim*dim:
@@ -102,6 +102,10 @@ class Board:
                         print("O wins")
                         Board.game_end_window(win, "O")
                     Board.DRAW_check(win, self.POS_CONFIG, DIM)
+                
+        if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    Board.spawn_program_and_die(["python", "menu.py"])
             
     
     def get_player_coordinates(self):
